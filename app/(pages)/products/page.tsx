@@ -1,23 +1,26 @@
 "use client"
-
+import { fetchProducts } from "@/app/api"
+import ProductCard from "@/app/components/productCard"
+import { ProductListSkeleton } from "@/app/components/productListSkeleton"
 import { useQuery } from "@tanstack/react-query"
-import ProductCard from "../components/productCard"
-import { fetchProducts } from "../api"
 
 export default function Products() {
   const { status, isLoading, data, error } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["products"],
     queryFn: () => fetchProducts(),
   })
 
   if (isLoading) {
-    return <span>Loading Product List...</span>
+    return (
+      <>
+        <ProductListSkeleton />
+      </>
+    )
   }
 
   if (status === "error") {
     return <span>Error: {error.message}</span>
   }
-  console.log(data)
 
   return (
     <main className="py-10">

@@ -9,7 +9,7 @@ const navigation = [
   { title: "Home", href: "/", icon: <House size={18} strokeWidth={1.5} /> },
   {
     title: "Products",
-    href: "/about",
+    href: "/products",
     icon: <LayoutList size={18} strokeWidth={1.5} />,
   },
   {
@@ -26,8 +26,10 @@ const navigation = [
 
 export default function Header({ title }: TitleProps) {
   return (
-    <header className="flex items-center justify-between bg-gray-700 min-h-20 px-6 rounded-b-xl shadow-lg [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-white">
-      <h2>{title}</h2>
+    <div className="flex items-center justify-between bg-gray-700 min-h-20 px-6 rounded-b-xl shadow-lg [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-white">
+      <Link href={"/"}>
+        <h2>{title}</h2>
+      </Link>
       <ul className="flex items-center gap-2">
         {navigation.map(({ title, href, icon }) => (
           <li
@@ -41,6 +43,6 @@ export default function Header({ title }: TitleProps) {
           </li>
         ))}
       </ul>
-    </header>
+    </div>
   )
 }

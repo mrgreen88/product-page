@@ -1,39 +1,32 @@
 import Image from "next/image"
 import Link from "next/link"
-
-export type ProductCardProps = {
-  id: number
-  title: string
-  description: string
-  category: string
-  image: string
-  price: number
-  rating: {
-    rate: number
-    count: number
-  }
-}
+import { ProductCardProps } from "../type"
 
 export default function ProductCard({ data }: any) {
   return (
-    <ul className="flex flex-wrap gap-3">
+    <ul className="flex justify-center flex-wrap gap-3 m-auto">
       {data.map((item: ProductCardProps) => (
-        <li
+        <Link
+          href={`/products/${item.id}`}
           key={item.id}
-          className="hover:cursor-pointer hover:shadow-xl transition-all duration-300 rounded-xl max-w-52 w-48 max-h-80 h-72 px-2 py-2 flex flex-col items-center justify-between gap-2 text-gray-600 border overflow-hidden"
+          className="cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 rounded-xl max-w-80 w-[300px] h-[360px] px-3 pt-1 pb-3 flex flex-col items-center gap-1 text-gray-600 border overflow-hidden [&_p]:self-start"
         >
-          <Image
-            src={item.image}
-            alt={item.title}
-            height={100}
-            width={90}
-            loading="lazy"
-          />
-          <Link className="text-sm font-medium" href={"/"}>
-            {item.title}
-          </Link>
-          <p className="self-start font-semibold">&euro;{item.price}</p>
-        </li>
+          <div className="h-3/4 flex items-center overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.title}
+              height={100}
+              width={150}
+              loading="lazy"
+              className="bg-transparent"
+            />
+          </div>
+          <div className="text-sm font-medium capitalize flex flex-col w-full justify-between h-1/4 p-1">
+            <p>{item.title.split(" ", 5).slice(0, 5).join(" ")}</p>
+            <p className="text-xs font-semibold">{item.category}</p>
+            <p className="font-semibold text-lg">&euro;{item.price}</p>
+          </div>
+        </Link>
       ))}
     </ul>
   )

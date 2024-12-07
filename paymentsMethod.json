@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/mastercard.svg"
+  },
+  {
+    "id": 2,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/visa.svg"
+  },
+  {
+    "id": 3,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/amex.svg"
+  },
+  {
+    "id": 4,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/discover.svg"
+  },
+  {
+    "id": 5,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/unionpay.svg"
+  },
+  {
+    "id": 6,
+    "icon": "https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat/jcb.svg"
+  }
+]

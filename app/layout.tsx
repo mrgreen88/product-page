@@ -1,7 +1,10 @@
+"use client"
+
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import { ReactQueryClientProvider } from "./components/ReactQueryClientProvider"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import Header from "./components/header"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,7 +17,8 @@ const geistMono = localFont({
   weight: "100 900",
 })
 
-export const metadata: Metadata = {
+const queryClient = new QueryClient()
+const metadata: Metadata = {
   title: "Product page",
 }
 
@@ -24,14 +28,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ReactQueryClientProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </html>
-    </ReactQueryClientProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-7xl m-auto`}
+      >
+        <QueryClientProvider client={queryClient}>
+          <section className="max-w-7xl m-auto">
+            <header>
+              <Header title="Website Title" />
+            </header>
+            <main className="h-full">{children}</main>
+            <footer></footer>
+          </section>
+        </QueryClientProvider>
+      </body>
+    </html>
   )
 }
