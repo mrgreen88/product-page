@@ -72,10 +72,16 @@ body {
 }
 
 @layer base {
+  img {
+    width: auto;
+    height: auto;
+  }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
   }
 }

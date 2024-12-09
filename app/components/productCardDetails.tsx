@@ -4,19 +4,13 @@ import { ProductCardProps } from "../type"
 import { Button } from "@/components/ui/button"
 import { Heart, ShoppingCart } from "lucide-react"
 
-interface ProductProps {
-  id: string
-  name: string
-  price: number
-}
-
 export default function ProductCardDetails({
   data,
 }: {
   data: ProductCardProps
 }) {
   const { description, title, category, image, price, rating } = data
-  
+
   return (
     <section className="flex gap-5 justify-center w-full">
       <article className="w-2/3 flex flex-col justify-center gap-4 p-2">

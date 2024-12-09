@@ -1,11 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ProductCardProps } from "../type"
 
-export default function ProductCard({ data }: any) {
+interface ProductCardProps {
+  id: string
+  title: string
+  image: string
+  category: string
+  price: number
+}
+
+export default function ProductCard({ data }: { data: ProductCardProps[] }) {
   return (
     <ul className="flex justify-center flex-wrap gap-3 m-auto">
-      {data.map((item: ProductCardProps) => (
+      {data?.map((item: ProductCardProps) => (
         <Link
           href={`/products/${item.id}`}
           key={item.id}
@@ -15,10 +22,10 @@ export default function ProductCard({ data }: any) {
             <Image
               src={item.image}
               alt={item.title}
-              height={100}
-              width={150}
+              className="w-40 h-auto bg-transparent"
+              width={160}
+              height={160}
               loading="lazy"
-              className="bg-transparent"
             />
           </div>
           <div className="text-sm font-medium capitalize flex flex-col w-full justify-between h-1/4 p-1">
